@@ -68,7 +68,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
             		<profiles>
-                		<profile>local</profile>
+                		<profile>aws</profile>
             		</profiles>
         		</configuration>
 			</plugin>
