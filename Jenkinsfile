@@ -25,7 +25,7 @@ pipeline {
                     dir '.'
                     label 'my-society-label'
                 }
-}   
+            }   
             
         }
     
