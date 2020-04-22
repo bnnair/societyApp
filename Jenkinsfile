@@ -1,13 +1,14 @@
 pipeline {
-    agent{
-        docker-host {
-            image 'maven:3-alpine' 
-        }
+    agent any
+    tools {
+        maven 'M2_HOME'
+        jdk 'jdk'
     }
+    
     stages {
         stage ("Build") {
             steps {
-                sh "mvn clean install package"
+                sh "mvn clean package"
             }
         }
     }
