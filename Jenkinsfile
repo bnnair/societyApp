@@ -1,4 +1,9 @@
 pipeline {
+    def remote = [:]
+    remote.name = "docker-host"
+    remote.host = "172.31.8.139"
+    remote.allowAnyHosts = true
+    
     agent any
     tools {
         maven 'M2_HOME'
@@ -9,12 +14,11 @@ pipeline {
         
         stage ("build image") {
             steps {
-                sshagent (credentials: ['docker-host']) {
-                    sh """
-                        ssh dockeradmin@172.31.8.139 /home/dockeradmin/docker build -t bnnair/societyapp .
-                        ssh dockeradmin@172.31.8.139 /home/dockeradmin/docker run -d -p 8080:8080 bnnair/societyapp
-                    """
-                }
+                withCredentials([usernamePassword(credentialsId: 'docker-host', passwordVariable: 'password', usernameVariable: 'userName')]) {
+	            remote.user = userName
+	            remote.password = password
+
+		        sshCommand remote: remote, command: 'cd /home/dockeradmin/docker; build -t bnnair/societyapp .;run -d -p 8080:8080 bnnair/societyapp;'
             }
             
         }
