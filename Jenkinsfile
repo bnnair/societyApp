@@ -1,6 +1,6 @@
 pipeline {
-    agent {
-        docker {
+    agent
+        docker-host {
             image 'maven:3-alpine' 
         }
     }
