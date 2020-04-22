@@ -1,11 +1,4 @@
-    def remote = [:]
-    remote.name = "docker-host"
-    remote.host = "172.31.8.139"
-    remote.allowAnyHosts = true
-
 pipeline {
-
-    
     agent any
     tools {
         maven 'M2_HOME'
@@ -16,6 +9,10 @@ pipeline {
         
         stage ("build image") {
             steps {
+		    def remote = [:]
+    			remote.name = "docker-host"
+    			remote.host = "172.31.8.139"
+    			remote.allowAnyHosts = true
                 withCredentials([usernamePassword(credentialsId: 'docker-host', passwordVariable: 'password', usernameVariable: 'userName')]) {
 	            remote.user = userName
 	            remote.password = password
