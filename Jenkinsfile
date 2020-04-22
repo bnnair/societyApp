@@ -1,8 +1,10 @@
-pipeline {
     def remote = [:]
     remote.name = "docker-host"
     remote.host = "172.31.8.139"
     remote.allowAnyHosts = true
+
+pipeline {
+
     
     agent any
     tools {
