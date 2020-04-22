@@ -18,11 +18,11 @@ pipeline {
 	            remote.user = userName
 	            remote.password = password
 
-		        sshCommand remote: remote, command: 'cd /home/dockeradmin/docker; build -t bnnair/societyapp .;run -d -p 8080:8080 bnnair/societyapp;'
-            }
+		    sshCommand remote: remote, command: 'cd /home/dockeradmin; docker build -t bnnair/societyapp .; docker run -d -p 8080:8080 bnnair/societyapp;'
+            	}
             
         }
-    
+	}  
     
     }
 }
