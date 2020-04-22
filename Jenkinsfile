@@ -10,7 +10,7 @@ pipeline {
         stage ("build image") {
             steps {
 
-                sshagent (credentials: ['docker-host']) {
+                sshagent (['docker-server']) {
                     sh """
 		    	ssh -o StrictHostKeyChecking=no dockeradmin@172.31.8.139 uptime
                         ssh dockeradmin@172.31.8.139 /home/dockeradmin/docker build -t bnnair/societyapp .
