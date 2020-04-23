@@ -12,7 +12,7 @@ pipeline {
 
                 sshagent (["docker-server"]) {
                     sh """
-		    	ssh -o StrictHostKeyChecking=no dockeradmin@172.31.8.139
+		    	ssh -o StrictHostKeyChecking=no dockeradmin@172.31.8.139 -p dockeradmin
 		
                     """
                 }
