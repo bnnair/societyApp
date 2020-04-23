@@ -10,9 +10,9 @@ pipeline {
         stage ("build image") {
             steps {
 
-                sshagent (['docker-server']) {
+                sshagent (["docker-server"]) {
                     sh """
-			ssh dockeradmin@35.154.178.162 ls -l
+			ssh dockeradmin@ip-172-31-8-139 ls -l
                     """
                 }
 
