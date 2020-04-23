@@ -12,7 +12,7 @@ pipeline {
 
                 sshagent (['docker-server']) {
                     sh """
-			ssh dockeradmin@172.31.8.139 ls -l
+			ssh dockeradmin@ip-172-31-8-139 ls -l
                     """
                 }
 
